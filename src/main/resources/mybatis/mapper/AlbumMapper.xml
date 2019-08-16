@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.AlbumMapper">
+  <resultMap id="BaseResultMap" type="com.lanqiao.model.Album">
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="aimg" jdbcType="VARCHAR" property="aimg" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="adetail" jdbcType="VARCHAR" property="adetail" />
+    <result column="areserve2" jdbcType="VARCHAR" property="areserve2" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from album
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanqiao.model.Album">
+    insert into album (aid, aname, aimg, 
+      mid, adetail, areserve2
+      )
+    values (#{aid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{aimg,jdbcType=VARCHAR}, 
+      #{mid,jdbcType=INTEGER}, #{adetail,jdbcType=VARCHAR}, #{areserve2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lanqiao.model.Album">
+    update album
+    set aname = #{aname,jdbcType=VARCHAR},
+      aimg = #{aimg,jdbcType=VARCHAR},
+      mid = #{mid,jdbcType=INTEGER},
+      adetail = #{adetail,jdbcType=VARCHAR},
+      areserve2 = #{areserve2,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select aid, aname, aimg, mid, adetail, areserve2
+    from album
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select aid, aname, aimg, mid, adetail, areserve2
+    from album
+  </select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.MvMapper">
+  <resultMap id="BaseResultMap" type="com.lanqiao.model.Mv">
+    <id column="mvid" jdbcType="INTEGER" property="mvid" />
+    <result column="mvname" jdbcType="VARCHAR" property="mvname" />
+    <result column="mlocation" jdbcType="VARCHAR" property="mlocation" />
+    <result column="mimg" jdbcType="VARCHAR" property="mimg" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="mvreserve" jdbcType="VARCHAR" property="mvreserve" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mv
+    where mvid = #{mvid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanqiao.model.Mv">
+    insert into mv (mvid, mvname, mlocation, 
+      mimg, sid, mvreserve
+      )
+    values (#{mvid,jdbcType=INTEGER}, #{mvname,jdbcType=VARCHAR}, #{mlocation,jdbcType=VARCHAR}, 
+      #{mimg,jdbcType=VARCHAR}, #{sid,jdbcType=INTEGER}, #{mvreserve,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lanqiao.model.Mv">
+    update mv
+    set mvname = #{mvname,jdbcType=VARCHAR},
+      mlocation = #{mlocation,jdbcType=VARCHAR},
+      mimg = #{mimg,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=INTEGER},
+      mvreserve = #{mvreserve,jdbcType=VARCHAR}
+    where mvid = #{mvid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select mvid, mvname, mlocation, mimg, sid, mvreserve
+    from mv
+    where mvid = #{mvid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select mvid, mvname, mlocation, mimg, sid, mvreserve
+    from mv
+  </select>
+</mapper>
