@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.EmpMapper">
+    <insert id="add" >
+        insert into emp values(null,#{name},#{age},#{sex})
+    </insert>
+    <select id="selectAll" resultType="com.lanqiao.model.Emp">
+    	select eid,name,age,sex from emp
+    </select>
+    <delete id="deleteByid" parameterType="java.lang.Integer">
+    	delete from emp where eid=#{eid}
+    </delete>
+    
+     <select id="selectById" parameterType="java.lang.Integer" resultType="com.lanqiao.model.Emp">
+    	select eid,name,age,sex from emp where eid=#{eid}
+    </select>
+    <update id="update" >
+    	update emp set name = #{name} ,age = #{age},sex = #{sex} where eid = #{eid}
+    </update>
+   
+</mapper>
