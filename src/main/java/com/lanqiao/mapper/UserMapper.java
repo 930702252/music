@@ -1,7 +1,9 @@
 package com.lanqiao.mapper;
 
-import com.lanqiao.model.User;
+
 import java.util.List;
+
+import com.lanqiao.model.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer uid);

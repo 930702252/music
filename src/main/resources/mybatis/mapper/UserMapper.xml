@@ -6,8 +6,9 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="ureserve1" jdbcType="VARCHAR" property="ureserve1" />
-    <result column="ureserve2" jdbcType="VARCHAR" property="ureserve2" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="usertype" jdbcType="VARCHAR" property="usertype" />
+    <result column="userstatus" jdbcType="VARCHAR" property="userstatus" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
@@ -15,28 +16,29 @@
   </delete>
   <insert id="insert" parameterType="com.lanqiao.model.User">
     insert into user (uid, username, password, 
-      email, ureserve1, ureserve2
-      )
+      email, createtime, usertype, 
+      userstatus)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{ureserve1,jdbcType=VARCHAR}, #{ureserve2,jdbcType=VARCHAR}
-      )
+      #{email,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{usertype,jdbcType=VARCHAR}, 
+      #{userstatus,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.lanqiao.model.User">
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      ureserve1 = #{ureserve1,jdbcType=VARCHAR},
-      ureserve2 = #{ureserve2,jdbcType=VARCHAR}
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      usertype = #{usertype,jdbcType=VARCHAR},
+      userstatus = #{userstatus,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select uid, username, password, email, ureserve1, ureserve2
+    select uid, username, password, email, createtime, usertype, userstatus
     from user
     where uid = #{uid,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select uid, username, password, email, ureserve1, ureserve2
+    select uid, username, password, email, createtime, usertype, userstatus
     from user
   </select>
 </mapper>
