@@ -39,4 +39,8 @@
     select mvid, mvname, mlocation, mimg, sid, mvreserve
     from mv
   </select>
+  
+  <select id="selectMvCountBysid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select count(*) MvCount from mv where mv.sid=#{mid,jdbcType=INTEGER}
+  </select>
 </mapper>

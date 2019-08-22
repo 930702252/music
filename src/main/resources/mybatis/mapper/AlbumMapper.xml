@@ -39,4 +39,7 @@
     select aid, aname, aimg, mid, adetail, areserve2
     from album
   </select>
+  <select id="selectCountBySid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+     select count(*) albumCount from album where album.areserve2=#{sid,jdbcType=INTEGER}
+  </select>
 </mapper>

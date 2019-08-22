@@ -3,6 +3,8 @@ package com.lanqiao.mapper;
 import com.lanqiao.model.Singer;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+@Mapper
 public interface SingerMapper {
     int deleteByPrimaryKey(Integer sid);
 
@@ -13,4 +15,8 @@ public interface SingerMapper {
     List<Singer> selectAll();
 
     int updateByPrimaryKey(Singer record);
+    
+    List<Singer> selectAllByFw(String fw);
+    
+    List<Singer> selectByType(String type);
 }

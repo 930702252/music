@@ -23,7 +23,7 @@
       #{type,jdbcType=VARCHAR}, #{simg,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
       #{sreserve,jdbcType=VARCHAR}, #{sreserve2,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.lanqiao.model.Singer">
+  <update id="updateByPrimaryKey" parameterType="Singer">
     update singer
     set sname = #{sname,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
@@ -42,5 +42,16 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select sid, sname, sex, type, simg, detail, sreserve, sreserve2
     from singer
+  </select>
+  <select id="selectAllByFw" resultMap="BaseResultMap">
+    select sid, sname, sex, type, simg, detail, sreserve, sreserve2
+    from singer
+    where sreserve=#{sreserve,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByType" resultMap="BaseResultMap">
+    select sid, sname, sex, type, simg, detail, sreserve, sreserve2
+    from singer
+    where type=#{type,jdbcType=VARCHAR}
   </select>
 </mapper>
