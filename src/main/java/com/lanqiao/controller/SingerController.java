@@ -19,7 +19,7 @@ import com.lanqiao.service.ISingerService;
 import com.lanqiao.service.SingerServiceImpl;
 
 @RestController
-public class Controller {
+public class SingerController {
 //	调用歌手的service
 	@Autowired
 	private ISingerService service1;
@@ -56,26 +56,33 @@ public class Controller {
 //	}
 	@PostMapping("/singerd")
 	public Map selectMore(Integer sid){
-		
+		System.out.println(sid+   "  sid");
 		Singer singer = service1.selectByPrimaryKey(sid);
 		
-		List<Music> list = service3.selectMusicBysid(sid);
+//		List<Music> list = service3.selectMusicBysid(sid);
 		
 		int albumCount=service2.selectCountBySid(sid);//专辑总数
+		
 		
 		int musicCount=service3.selectMusicCountBysid(sid);//单曲总数
 		
 		int mvCount=service4.selectMvCountBysid(sid);//mv数量
-		
 		Map map=new HashMap<>();
 		map.put("singer", singer);
-		map.put("list", list);
+//		map.put("list", list);
 		map.put("albumCount", albumCount);
 		map.put("musicCount", musicCount);
 		map.put("mvCount", mvCount);
-		
+//		System.out.println("map  " + map);
+//		System.out.println(list);
 		return map;
+	}
+	@PostMapping("/musicm")
+	public List selectMusicm(Integer sid){
+		
+//		List<Music> list = service3.selectMusicBysid(sid);
+//		System.out.println(list);
+		return service3.selectMusicBysid(sid);
 		
 	}
-	
 }

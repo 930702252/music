@@ -67,8 +67,8 @@
     state, discuss, mreserve1, mreserve2, mreserve3
     from music
   </select>
-  <select id="selectMusicCountBysid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select count(*) musicCount from music where music.sid=#{mid,jdbcType=INTEGER}
+  <select id="selectMusicCountBysid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) musicCount from music where sid=#{sid,jdbcType=INTEGER}
   </select>
   <select id="selectMusicBysid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select mid, mname, sid, count, type, myear, mimg, location, aid, mvid, duration, 
